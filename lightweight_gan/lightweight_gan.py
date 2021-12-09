@@ -1388,7 +1388,7 @@ class Trainer():
         frames = []
         for ratio in tqdm(ratios):
             interp_latents = slerp(ratio, latents_low, latents_high)
-            generated_images = self.generate_(self.GAN.GE, interp_latents)
+            generated_images = self.generate_(self.GAN.G, interp_latents)
             images_grid = torchvision.utils.make_grid(generated_images, nrow = num_rows)
             pil_image = transforms.ToPILImage()(images_grid.cpu())
             
